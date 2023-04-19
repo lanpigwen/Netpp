@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.bg, name="bg"),
     path('about/', views.about, name="about"),
     path('more/', views.more, name="more"),
+    path('vrHouse/',views.vrHouse,name="vrHouse")
 ]
