@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>room</title>
+    <title>BOXroom</title>
     <style>
         body {
             margin: 0;
@@ -54,19 +54,37 @@
 
         controls.maxDistance=1;//保证不会缩出房间
         controls.minDistance=0.001;
-        controls.zoomSpeed=5;
+        controls.zoomSpeed=3;
         
-        var sphereGeometry = new THREE.SphereGeometry(1, 50, 50);//节点数量越大，需要计算的三角形就越多，影响性能
-        sphereGeometry.scale(1, 1, -1);
 
 
-        var texture = new THREE.TextureLoader().load('../images/room2.jpg');
-        var sphereMaterial = new THREE.MeshBasicMaterial({map: texture});
+        var materials = [];
+        //根据左右上下前后的顺序构建六个面的材质集
+        var texture_left = new THREE.TextureLoader().load( '../images/roomP_l2.jpg' );
+        materials.push( new THREE.MeshBasicMaterial( { map: texture_left} ) );
 
-        var sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
- 
-        scene.add(sphere);
-        
+        var texture_right = new THREE.TextureLoader().load( '../images/roomP_r2.jpg' );
+        materials.push( new THREE.MeshBasicMaterial( { map: texture_right} ) );
+
+        var texture_top = new THREE.TextureLoader().load( '../images/roomP_u2.jpg' );
+        materials.push( new THREE.MeshBasicMaterial( { map: texture_top} ) );
+
+        var texture_bottom = new THREE.TextureLoader().load( '../images/roomP_d2.jpg' );
+        materials.push( new THREE.MeshBasicMaterial( { map: texture_bottom} ) );
+
+        var texture_front = new THREE.TextureLoader().load( '../images/roomP_f2.jpg' );
+        materials.push( new THREE.MeshBasicMaterial( { map: texture_front} ) );
+
+        var texture_back = new THREE.TextureLoader().load( '../images/roomP_b2.jpg' );
+        materials.push( new THREE.MeshBasicMaterial( { map: texture_back} ) );
+
+        var box = new THREE.Mesh( new THREE.BoxGeometry( 3, 3, 3 ), materials );
+        box.geometry.scale( 1, 1, -1 );
+        scene.add(box);
+
+
+
+
         function animate() {
             requestAnimationFrame(animate);
             controls.update();
