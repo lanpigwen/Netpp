@@ -109,7 +109,7 @@
                 <div class="worldwide-contact">
 
 
-                    <div class="worldwide-language" style="">
+                    <div class="worldwide-language">
                         <h3>联系方式</h3>
                     </div>
                     <ul class="list-unstyled">
@@ -173,7 +173,7 @@
                     <div class="swiper-slide slide">
                         <img src="../static/image/1.png" id="content_0_rptBannerList_imgCard_0" class="banner-img js-no-zoom lazyload" alt="hc2022 cn 1">
                         <div class="rich-text-4">
-    <a class="btn-more btn-black" title="了解更多" href="{% url 'more' %}" target="_blank" style="position:absolute; z-index: 9999;">了解更多</a>
+    <a class="btn-more btn-black" title="了解更多" href="{% url 'more' %}" style="position:absolute; z-index: 9999;">了解更多</a>
   </div>
   <style>
     /*pc*/
@@ -451,38 +451,57 @@ position: relative;
         </div>
         <div class="section-title white">
             <form method="post">
-                <textarea name="message" style="width:490px;height:80px;border:1px solid #c8c8c8;"></textarea>
+                <textarea id="suggest-textarea" name="message" style="width:490px;height:80px;border:1px solid #c8c8c8;resize:none;overflow: auto;"></textarea>
                 <br><br>
-                <input type="submit" onclick="return false;" class="btn float-buttons waves-effect waves-button waves-float" id="magicbutton" value="Submit"/>
+                <input type="submit" onclick="return submitFun();" class="btn float-buttons waves-effect waves-button waves-float" id="magicbutton"  value="提交建议"/>
             </form>
         </div>
        </p>
 		<br>
+       <div class="content-box container-custom" id="alert-submit" style="width: 490px;"></div>
+        
         <center>
-        <div class="testimonial-slider" style="min-width:980px;margin:30px 0;">
+            <div id= "sg-list" class="testimonial-slider" style="height: 200px;min-width:980px;margin:30px 0;max-height: 700px;overflow-y: scroll;">
 
-            <div class="single-slide" style="display:inline-block; width: 29%; height:100px; margin-right: 30px; background-color: #F8F8FF; box-shadow: 2px 2px 2.5px 2.5px #DDDDDD;">
-                <div class="inner">
-                    <p style="line-height: 100px;"> 体验很好，很喜欢。</p>
+                <div class="single-slide" style="display:inline-block; width: 29%; height:100px; margin-right: 30px; background-color: #F8F8FF; box-shadow: 2px 2px 2.5px 2.5px #DDDDDD;">
+                    <div class="inner">
+                        <p style="line-height: 100px;"> 体验很好，很喜欢。</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="single-slide" style="display:inline-block; width: 29%; height:100px; margin-right: 30px; background-color: #F8F8FF; box-shadow: 2px 2px 2.5px 2.5px #DDDDDD;">
-                <div class="inner">
-                    <p style="line-height: 100px;"> 很新颖，希望多来点！</p>
+                <div class="single-slide" style="display:inline-block; width: 29%; height:100px; margin-right: 30px; background-color: #F8F8FF; box-shadow: 2px 2px 2.5px 2.5px #DDDDDD;">
+                    <div class="inner">
+                        <p style="line-height: 100px;"> 很新颖，希望多来点！</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="single-slide" style="display:inline-block; width: 29%; height:100px; background-color: #F8F8FF; box-shadow: 2px 2px 2.5px 2.5px #DDDDDD;">
-                <div class="inner">
-                    <p style="line-height: 100px;"> かっこいい‼ </p>
+                <div class="single-slide" style="display:inline-block; width: 29%; height:100px; background-color: #F8F8FF; box-shadow: 2px 2px 2.5px 2.5px #DDDDDD;">
+                    <div class="inner">
+                        <p style="line-height: 100px;"> かっこいい‼ </p>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </center>
     </div>
 </div>
+
+<script>
+    function submitFun(){
+        var suggest=$("#suggest-textarea").val();
+        if (suggest.trim().length === 0){$("#suggest-textarea").val("");return false;}
+        var alert_dom='<div class="alert alert-success alert-dismissable">'+
+            '<button type="button" class="close" data-dismiss="alert"'+
+            'aria-hidden="true">'+
+            '&times;</button>成功！很好地完成了提交。</div>';
+        $("#alert-submit").html(alert_dom);
+        var suggestDom='<div class="single-slide" style="display:inline-block; width: 29%; height:100px; margin-right: 30px; background-color: #F8F8FF; box-shadow: 2px 2px 2.5px 2.5px #DDDDDD;">'+
+                    '<div class="inner"><p style="line-height: 100px;">'+suggest+'</p></div></div>';
+        $('#sg-list').prepend(suggestDom);
+        $("#suggest-textarea").val("");
+        return false;
+    }
+</script>
 
         <!--/HWDocContent-->
     </div>
