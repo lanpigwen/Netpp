@@ -22,7 +22,7 @@ def autopull(request):
 
         hookdata=request.body.decode('utf-8')
         data=json.loads(hookdata)
-        print(data.headers('X-Hub-Signature-256'))
+        # print(data.headers('X-Hub-Signature-256'))
         print('/n----------------------收到webhook------------------------------/n')
         print(request.headers('X-Hub-Signature-256'))
         ans={"from":"post"}
