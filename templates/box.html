@@ -1,7 +1,8 @@
 <html>
 
 <head>
-    <title>BOXroom</title>
+    <title>VR-Room-box</title>
+    <link rel="shortcut icon" href="../static/image/favicon.ico">
     <style>
         body {
             margin: 0;
@@ -62,22 +63,22 @@
 
         var materials = [];
         //根据左右上下前后的顺序构建六个面的材质集
-        var texture_left = new THREE.TextureLoader().load( '../images/roomP_l2.jpg' );
+        var texture_left = new THREE.TextureLoader().load( '../static/image/VRroom/images/roomP_l2.jpg' );
         materials.push( new THREE.MeshBasicMaterial( { map: texture_left} ) );
 
-        var texture_right = new THREE.TextureLoader().load( '../images/roomP_r2.jpg' );
+        var texture_right = new THREE.TextureLoader().load( '../static/image/VRroom/images/roomP_r2.jpg' );
         materials.push( new THREE.MeshBasicMaterial( { map: texture_right} ) );
 
-        var texture_top = new THREE.TextureLoader().load( '../images/roomP_u2.jpg' );
+        var texture_top = new THREE.TextureLoader().load( '../static/image/VRroom/images/roomP_u2.jpg' );
         materials.push( new THREE.MeshBasicMaterial( { map: texture_top} ) );
 
-        var texture_bottom = new THREE.TextureLoader().load( '../images/roomP_d2.jpg' );
+        var texture_bottom = new THREE.TextureLoader().load( '../static/image/VRroom/images/roomP_d2.jpg' );
         materials.push( new THREE.MeshBasicMaterial( { map: texture_bottom} ) );
 
-        var texture_front = new THREE.TextureLoader().load( '../images/roomP_f2.jpg' );
+        var texture_front = new THREE.TextureLoader().load( '../static/image/VRroom/images/roomP_f2.jpg' );
         materials.push( new THREE.MeshBasicMaterial( { map: texture_front} ) );
 
-        var texture_back = new THREE.TextureLoader().load( '../images/roomP_b2.jpg' );
+        var texture_back = new THREE.TextureLoader().load( '../static/image/VRroom/images/roomP_b2.jpg' );
         materials.push( new THREE.MeshBasicMaterial( { map: texture_back} ) );
 
         var box = new THREE.Mesh( new THREE.BoxGeometry( 3, 3, 3 ), materials );
