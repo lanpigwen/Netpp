@@ -23,6 +23,7 @@ def autopull(request):
         ans={"from":"get"}
         return HttpResponse(json.dumps(ans))
     else:
+        print(request.POST)
         print('/n----------------------收到webhook------------------------------/n')
         ans={"from":"post"}
         return HttpResponse(json.dumps(ans))
