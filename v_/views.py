@@ -50,6 +50,8 @@ def autopull(request):
         if verify_signature(request.body,secret_key,sig_header):
             print('\n----------------signatures match-------------------------\n')
             print(os.getcwd())
+            os.chdir("/v_")
+            print(os.getcwd())
             ans={"status":"pull seccess"}
             return HttpResponse(json.dumps(ans))
         else:
