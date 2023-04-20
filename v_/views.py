@@ -27,3 +27,4 @@ def autopull(request):
         ans={"from":"post"}
         return HttpResponse(json.dumps(ans))
     
+    
