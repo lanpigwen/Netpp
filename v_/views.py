@@ -24,14 +24,13 @@ def autopull(request):
         return HttpResponse(json.dumps(ans))
     else:
 
-        print(request.POST)
-        print(request.body)
+        # print(request.POST)
+        # print(request.body)
         hookdata=request.body.decode('utf-8')
         data=json.loads(hookdata)
-        print(data.password)
         print(data)
         print('/n----------------------收到webhook------------------------------/n')
-        print(request.POST.get('password'))
+        # print(request.POST.get('password'))
         ans={"from":"post"}
         return HttpResponse(json.dumps(ans))
     
