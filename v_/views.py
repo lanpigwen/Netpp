@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect,HttpResponse
 import json
+import os
 
 # 验证webhook
 import hashlib
@@ -45,16 +46,14 @@ def vrHouse(request):
 
 def autopull(request):
     if request.method=='POST':
-        hookdata=request.body.decode('utf-8')
-        data=json.loads(hookdata)
-        print('\n----------------------收到webhook------------------------------\n')
         sig_header=request.headers.get('X-Hub-Signature-256')
         if verify_signature(request.body,secret_key,sig_header):
             print('\n----------------signatures match-------------------------\n')
-            ans={"from":"post"}
+            print(os.getcwd())
+            ans={"status":"pull seccess"}
             return HttpResponse(json.dumps(ans))
-        
-        ans={"from":"post fail"}
-        return HttpResponse(json.dumps(ans))    
+        else:
+            ans={"status":"pull fail"}
+            return HttpResponse(json.dumps(ans))    
     
 
