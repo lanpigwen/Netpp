@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
+import json
 
 #以下两行的作用是让结果唯一：
 from langdetect import DetectorFactory
@@ -15,3 +16,13 @@ def more(request):
 
 def vrHouse(request):
     return render(request, 'room.html',locals())
+
+def autopull(request):
+    if request.method=='GET':
+        print('GET SOMETHING')
+        ans={"from":"get"}
+        return HttpResponse(json.dumps(ans))
+    else:
+        print('收到webhook')
+        ans={"from":"post"}
+        return HttpResponse(json.dumps(ans))
