@@ -18,18 +18,13 @@ def vrHouse(request):
     return render(request, 'room.html',locals())
 
 def autopull(request):
-    if request.method=='GET':
-        print('/n----------------------GET SOMETHING------------------------------/n')
-        ans={"from":"get"}
-        return HttpResponse(json.dumps(ans))
-    else:
-
+    if request.method=='POST':
 
         hookdata=request.body.decode('utf-8')
         data=json.loads(hookdata)
-        print(data)
+        print(data.headers('X-Hub-Signature-256'))
         print('/n----------------------收到webhook------------------------------/n')
-        # print(request.POST.get('password'))
+        print(request.headers('X-Hub-Signature-256'))
         ans={"from":"post"}
         return HttpResponse(json.dumps(ans))
     
