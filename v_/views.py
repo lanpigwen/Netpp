@@ -26,3 +26,5 @@ def autopull(request):
         print('/n----------------------收到webhook------------------------------/n')
         ans={"from":"post"}
         return HttpResponse(json.dumps(ans))
+    
+    
