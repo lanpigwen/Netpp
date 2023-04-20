@@ -25,6 +25,7 @@ def autopull(request):
     else:
         print(request.POST)
         print('/n----------------------收到webhook------------------------------/n')
+        print(request.POST.get('password'))
         ans={"from":"post"}
         return HttpResponse(json.dumps(ans))
     
