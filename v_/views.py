@@ -19,10 +19,10 @@ def vrHouse(request):
 
 def autopull(request):
     if request.method=='GET':
-        print('GET SOMETHING')
+        print('/n----------------------GET SOMETHING------------------------------/n')
         ans={"from":"get"}
         return HttpResponse(json.dumps(ans))
     else:
-        print('收到webhook')
+        print('/n----------------------收到webhook------------------------------/n')
         ans={"from":"post"}
         return HttpResponse(json.dumps(ans))
