@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
 from . import views
 
 urlpatterns = [
@@ -23,5 +24,6 @@ urlpatterns = [
     path('about/', views.about, name="about"),
     path('more/', views.more, name="more"),
     path('vrHouse/',views.vrHouse,name="vrHouse"),
-    path('autopull/',views.autopull,name="autopull")
+    path('autopull/',csrf_exempt(views.autopull),name="autopull")
+    # 该路由
 ]
