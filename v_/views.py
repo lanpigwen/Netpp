@@ -19,3 +19,4 @@ def vrHouse(request):
     return render(request, 'room.html',locals())
 
 
+
