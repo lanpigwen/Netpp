@@ -24,4 +24,7 @@ urlpatterns = [
     path('about/', views.about, name="about"),
     path('more/', views.more, name="more"),
     path('vrHouse/',views.vrHouse,name="vrHouse"),
+    path('feature/', views.feature, name="feature"),
+    path('market/', views.market, name="market"),
+    path('overview/', views.overview, name="overview"),
 ]

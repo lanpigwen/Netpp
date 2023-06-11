@@ -18,4 +18,11 @@ def more(request):
 def vrHouse(request):
     return render(request, 'room.html',locals())
 
+def feature(request):
+    return render(request, 'feature.html',locals())
 
+def market(request):
+    return render(request, 'market.html',locals())
+
+def overview(request):
+    return render(request, 'overview.html',locals())
